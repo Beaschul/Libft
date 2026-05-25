@@ -6,7 +6,7 @@
 /*   By: aschulz- <aschulz-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/19 17:42:00 by aschulz-          #+#    #+#             */
-/*   Updated: 2026/05/21 16:21:46 by aschulz-         ###   ########.fr       */
+/*   Updated: 2026/05/22 13:14:38 by aschulz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	unsigned char	*d;
-	const char		*s;
+	unsigned char			*d;
+	const unsigned char		*s;
 
 	d = dest;
 	s = src;

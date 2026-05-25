@@ -1,23 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aschulz- <aschulz-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/19 12:08:38 by aschulz-          #+#    #+#             */
-/*   Updated: 2026/05/22 15:49:57 by aschulz-         ###   ########.fr       */
+/*   Created: 2026/05/23 17:05:40 by aschulz-          #+#    #+#             */
+/*   Updated: 2026/05/25 10:02:17 by aschulz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strlen(const char *str)
+void	*ft_memchr(const void *s, int c, size_t n)
 {
-	int	i;
+	const char	t;
+	int			i;
 
+	t = s;
 	i = 0;
-	while (str[i] != '\0')
+	while (t[i] != '\0')
 	{
+		if (t[i] == c)
+			return ((char *)&t[i]);
 		i++;
 	}
-	return (i);
+	if (c == '\0')
+		return ((char *)&t[i]);
+	return (NULL);
 }
