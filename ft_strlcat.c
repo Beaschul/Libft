@@ -6,20 +6,20 @@
 /*   By: aschulz- <aschulz-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/21 19:15:47 by aschulz-          #+#    #+#             */
-/*   Updated: 2026/05/22 09:43:46 by aschulz-         ###   ########.fr       */
+/*   Updated: 2026/05/25 18:38:28 by aschulz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strncat(char *dest, char *src, unsigned int nb)
-{
-	unsigned int	i;
-	unsigned int	j;
+#include "libft.h"
 
-	i = 0;
-	while (dest[i] != '\0')
-		i++;
+char	*ft_strlcat(char *dest, const char *src, size_t size)
+{
+	size_t	i;
+	size_t	j;
+
+	i = ft_strlen(dest);
 	j = 0;
-	while (src[j] != '\0' && j < nb)
+	while (src[j] != '\0' && j < size)
 	{
 		dest[i] = src[j];
 		i++;

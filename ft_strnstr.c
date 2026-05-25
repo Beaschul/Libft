@@ -6,9 +6,11 @@
 /*   By: aschulz- <aschulz-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/25 10:40:15 by aschulz-          #+#    #+#             */
-/*   Updated: 2026/05/25 11:21:46 by aschulz-         ###   ########.fr       */
+/*   Updated: 2026/05/25 15:12:55 by aschulz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
@@ -28,7 +30,7 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 				return ((char *)&big[i]);
 		}
 		i++;
-		J = 0; //PQ?
+		j = 0; //PQ?
 	}
 	return (0);
 }

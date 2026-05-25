@@ -6,11 +6,13 @@
 /*   By: aschulz- <aschulz-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/23 16:55:18 by aschulz-          #+#    #+#             */
-/*   Updated: 2026/05/25 10:01:24 by aschulz-         ###   ########.fr       */
+/*   Updated: 2026/05/25 16:48:26 by aschulz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_srtncmp(const char *s1, const char *s2, size_t n)
+#include "libft.h"
+
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
 	unsigned int	i;
 

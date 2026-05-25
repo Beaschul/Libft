@@ -6,7 +6,7 @@
 /*   By: aschulz- <aschulz-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/19 10:39:44 by aschulz-          #+#    #+#             */
-/*   Updated: 2026/05/22 15:05:32 by aschulz-         ###   ########.fr       */
+/*   Updated: 2026/05/25 14:11:46 by aschulz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,3 +18,4 @@ int	main(void)
 	printf("%s", ft_strrchr("famioma", 'a'));
 	return 0;
 }
+cd 
