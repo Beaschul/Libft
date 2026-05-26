@@ -1,40 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aschulz- <aschulz-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/25 11:23:26 by aschulz-          #+#    #+#             */
-/*   Updated: 2026/05/26 12:10:09 by aschulz-         ###   ########.fr       */
+/*   Created: 2026/05/26 16:28:58 by aschulz-          #+#    #+#             */
+/*   Updated: 2026/05/26 16:41:01 by aschulz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(const char *str)
+char	*ft_strdup(const char *s)
 {
-	int	i;
-	int	sign;
-	int	result;
+	char	*dest;
+	int		len;
 
-	i = 0;
-	sign = 1;
-	result = 0;
-	while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
-	{
-		i++;
-	}
-	while (str[i] == '+' || str[i] == '-')
-	{
-		if (str[i] == '-')
-			sign *= -1;
-		i++;
-	}
-	while (str[i] >= '0' && str[i] <= '9')
-	{
-		result = (result * 10) + (str[i] - '0');
-		i++;
-	}
-	return (result * sign);
+	if (!s)
+		return (NULL);
+	len = ft_strlen(s) + 1;
+	dest = (char *)malloc((len) * sizeof(char));
+	if (dest == NULL)
+		return (NULL);
+	ft_strlcpy(dest, s, len);
+	return (dest);
 }
