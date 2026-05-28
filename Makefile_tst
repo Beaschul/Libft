@@ -1,0 +1,24 @@
+NAME = libft
+CC = cc
+CFLAGS = -Wall -Werror -Wextra
+SRC = $(shell find . -type f -name "ft_*.c" | tr "\n" " ")
+OBJS = $(SRC:.c=.o)
+MAIN = main.c
+
+all: $(NAME)
+
+$(NAME): $(OBJS)
+	$(CC) $(CFLAGS) $(OBJS) $(MAIN) -o $@
+
+%.o: %.c
+	$(CC) $(CFLAGS) $< -o $@
+
+clean:
+	rm -rf $(OBJS)
+
+fclean: clean
+	rm -rf $(NAME)
+
+re: fclean all
+
+.PHONY: all clean fclean re

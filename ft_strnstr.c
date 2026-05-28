@@ -6,10 +6,12 @@
 /*   By: aschulz- <aschulz-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/25 10:40:15 by aschulz-          #+#    #+#             */
-/*   Updated: 2026/05/26 12:06:15 by aschulz-         ###   ########.fr       */
+/*   Updated: 2026/05/27 14:45:00 by aschulz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
+#include <stdlib.h>
 #include "libft.h"
 
 char	*ft_strnstr(const char *big, const char *little, size_t len)
@@ -34,3 +36,11 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 	}
 	return (0);
 }
+
+// int main()
+// {
+// 	char * nome = "ana beatrice";
+// 	char * oi = ft_strnstr(nome, "ri", ft_strlen(nome));
+// 	printf("res = %s", oi);
+// 	return (0);
+// }
