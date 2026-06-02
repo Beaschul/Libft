@@ -1,36 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_lstclear.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aschulz- <aschulz-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/26 16:48:07 by aschulz-          #+#    #+#             */
-/*   Updated: 2026/05/28 13:29:13 by aschulz-         ###   ########.fr       */
+/*   Created: 2026/06/01 17:15:04 by aschulz-          #+#    #+#             */
+/*   Updated: 2026/06/01 17:33:56 by aschulz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+void	ft_lstclear(t_list **lst, void (del)(void *))
 {
-	unsigned int		len_s;
-	size_t				i;
-	char				*str;
+	t_list *temp;
 
-	len_s = ft_strlen(s);
-	if (start > len_s)
-		return (ft_strdup(""));
-	if (len > len_s + start)
-		len = len_s;
-	str = ft_calloc((len + 1), sizeof(char));
-	if (!str)
-		return (NULL);
-	i = 0;
-	while (i < len)
+	temp = (*lst)->next;
+	while(*lst)
 	{
-		str[i] = s[start + i];
-		i++;
+		ft_lstdelone(*lst, del);
+		*lst = temp;
+		if (*lst)
+			temp = (*lst)->next;
 	}
-	return (str);
+	*lst = NULL;
 }

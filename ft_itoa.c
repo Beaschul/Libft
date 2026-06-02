@@ -1,36 +1,59 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aschulz- <aschulz-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/26 16:48:07 by aschulz-          #+#    #+#             */
-/*   Updated: 2026/05/28 13:29:13 by aschulz-         ###   ########.fr       */
+/*   Created: 2026/05/28 15:58:08 by aschulz-          #+#    #+#             */
+/*   Updated: 2026/06/01 10:22:07 by aschulz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+static int	ft_get_len(long n)
 {
-	unsigned int		len_s;
-	size_t				i;
-	char				*str;
+	int	len;
 
-	len_s = ft_strlen(s);
-	if (start > len_s)
-		return (ft_strdup(""));
-	if (len > len_s + start)
-		len = len_s;
-	str = ft_calloc((len + 1), sizeof(char));
+	len = 0;
+	if (n <= 0)
+	{
+		len++;
+		if (n < 0)
+			n = -n;
+	}
+	while (n > 0)
+	{
+		len++;
+		n /= 10;
+	}
+	return (len);
+}
+
+char	*ft_itoa(int n)
+{
+	char	*str;
+	long	nbr;
+	int		len;
+
+	nbr = n;
+	len = ft_get_len(nbr);
+	str = ft_calloc(sizeof(char), len + 1);
 	if (!str)
 		return (NULL);
-	i = 0;
-	while (i < len)
+	if (nbr == 0)
+		str[0] = '0';
+	if (nbr < 0)
 	{
-		str[i] = s[start + i];
-		i++;
+		str[0] = '-';
+		nbr = -nbr;
+	}
+	while (nbr > 0)
+	{
+		str[len - 1] = (nbr % 10) + '0';
+		nbr /= 10;
+		len--;
 	}
 	return (str);
 }

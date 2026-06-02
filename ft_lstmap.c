@@ -1,36 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aschulz- <aschulz-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/26 16:48:07 by aschulz-          #+#    #+#             */
-/*   Updated: 2026/05/28 13:29:13 by aschulz-         ###   ########.fr       */
+/*   Created: 2026/06/01 18:03:19 by aschulz-          #+#    #+#             */
+/*   Updated: 2026/06/01 19:22:08 by aschulz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+t_list	*ft_lstmap(t_list *lst, void *(f)(void *), void (void *del))
 {
-	unsigned int		len_s;
-	size_t				i;
-	char				*str;
+	t_list *new_lst;
+	t_list *curr_node;
+	
 
-	len_s = ft_strlen(s);
-	if (start > len_s)
-		return (ft_strdup(""));
-	if (len > len_s + start)
-		len = len_s;
-	str = ft_calloc((len + 1), sizeof(char));
-	if (!str)
-		return (NULL);
-	i = 0;
-	while (i < len)
+	new_lst = ft_lstnew(f(lst->content));
+	while (lst)
 	{
-		str[i] = s[start + i];
-		i++;
+		lst = lst->next;
+		if (!lst)
+			return (new_lst);
+		curr_node = ft_lstnew(f(lst->content));
+		if (!curr_node)
+		{
+			ft_lstclear(&new_lst, del);
+			return (NULL);
+		}
+		ft_lstadd_back(&new_lst, curr_node);
 	}
-	return (str);
+	return (new_lst);
 }

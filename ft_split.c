@@ -6,80 +6,89 @@
 /*   By: aschulz- <aschulz-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/27 19:00:27 by aschulz-          #+#    #+#             */
-/*   Updated: 2026/05/27 20:00:21 by aschulz-         ###   ########.fr       */
+/*   Updated: 2026/06/01 10:53:37 by aschulz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-size_t splitlenght( char const *s, char c);
-size_t fillsplit(char const *s, char c, char **split);
+#include "libft.h"
 
-char **ft_split(char const *s, char c)
+static size_t	skip_char(char const *s, char c);
+static size_t	word_len(char const *s, char c);
+static size_t	split_len(char const *s, char c);
+static void		fill_split(char const *s, char c, char **split);
+
+char	**ft_split(char const *s, char c)
 {
-	size_t 	len;
-	char 	**res;
+	char	**res;
+	size_t	len;
 
-	len = splitlenght(s, c);
-	if (len == 0)
+	if (!s)
 		return (NULL);
+	len = split_len(s, c);
 	res = ft_calloc(len + 1, sizeof(char *));
-	fillsplit(s, c, res);
+	if (!res)
+		return (NULL);
+	if (len > 0)
+		fill_split(s, c, res);
 	return (res);
 }
 
-size_t wordlen(char const *s, char c)
+static size_t	skip_char(char const *s, char c)
 {
-	size_t i;
-	
+	size_t	i;
+
 	i = 0;
-	while (s[i] != '\0' &&  s[i] != c)
-		i++;
-	return (i);
-}
-
-size_t skipc(char const *s, char c)
-{
-	int i;
-
 	while (s[i] && s[i] == c)
 		i++;
 	return (i);
 }
 
-size_t splitlenght( char const *s, char c)
+static size_t	word_len(char const *s, char c)
 {
-	size_t lenght;
-	size_t i;
+	size_t	i;
 
 	i = 0;
-	lenght = 0;
-	while (s[i])
-	{
-		i = skipc(s, c);
-		if (!s[i])
-			return (lenght);
-		lenght++;
-		i += wordlen(s, c);
-	}
-	return (lenght);
+	while (s[i] && s[i] != c)
+		i++;
+	return (i);
 }
 
-void fillsplit(char const *s, char c, char **split)
+static size_t	split_len(char const *s, char c)
 {
-	size_t lenght;
-	size_t i;
-	size_t word_len;
+	size_t	i;
+	size_t	len;
 
 	i = 0;
-	lenght = 0;
+	len = 0;
 	while (s[i])
 	{
-		i = skipc(s, c);
+		i += skip_char(s + i, c);
 		if (!s[i])
-			return;
-		word_len = wordlen(s, c);
-		split[lenght] = ft_substr(s, i, word_len);
-		lenght++;
-		i += word_len;
+			return (len);
+		len++;
+		i += word_len(s + i, c);
 	}
-	return;
+	return (len);
+}
+
+static void	fill_split(char const *s, char c, char **split)
+{
+	size_t	i;
+	size_t	index;
+	size_t	w_len;
+
+	i = 0;
+	index = 0;
+	while (s[i])
+	{
+		i += skip_char(s + i, c);
+		if (!s[i])
+			return ;
+		w_len = word_len(s + i, c);
+		split[index] = ft_substr(s, i, w_len);
+		if (!split[index])
+			return ;
+		index++;
+		i += w_len;
+	}
 }

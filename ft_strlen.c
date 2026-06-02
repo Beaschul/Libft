@@ -6,11 +6,11 @@
 /*   By: aschulz- <aschulz-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/19 12:08:38 by aschulz-          #+#    #+#             */
-/*   Updated: 2026/05/27 16:57:20 by aschulz-         ###   ########.fr       */
+/*   Updated: 2026/05/28 13:27:09 by aschulz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "libft.h"
+#include "libft.h"
 
 size_t	ft_strlen(const char *str)
 {
