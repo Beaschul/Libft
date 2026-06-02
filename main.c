@@ -6,13 +6,12 @@
 /*   By: aschulz- <aschulz-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/19 10:39:44 by aschulz-          #+#    #+#             */
-/*   Updated: 2026/06/01 14:49:51 by aschulz-         ###   ########.fr       */
+/*   Updated: 2026/06/02 15:48:42 by aschulz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdio.h>
 #include "libft.h"
-#include "linkedlist.h"
 
 void test_strnstr();
 void test_substr();
@@ -20,6 +19,7 @@ void test_strjoin();
 void test_strtrim();
 void test_split();
 void test_linkedlist();
+void test_strdup();
 
 int	main(void)
 {
@@ -29,7 +29,8 @@ int	main(void)
 	test_strjoin();
 	test_strtrim();
 	test_split();
-	test_linkedlist();
+	test_strdup();
+//	test_linkedlist();
 	return 0;
 }
 void test_strnstr()
@@ -87,36 +88,44 @@ int compare(void *cont1, void *cont2)
 	return *((int *)cont1) == *((int *)cont2);
 }
 
-void test_linkedlist()
+// void test_linkedlist()
+// {
+// 	printf("\n\n************************************************\n");
+// 	printf("TESTANDO LINKEDLIST!\n");
+// 	int n1 = 1;
+// 	int n2 = 2;
+// 	int n3 = 3;
+// 	int n4 = 4;
+// 	t_ll *linkedlist = ll_new();
+
+// 	linkedlist->add_back(linkedlist, &n1);
+// 	linkedlist->add_back(linkedlist, &n2);
+// 	linkedlist->add_back(linkedlist, &n3);
+// 	linkedlist->add_back(linkedlist, &n4);
+
+// 	t_ll_node	*temp = linkedlist->begin;
+// 	while(temp)
+// 	{
+// 		printf("value: %d\n", *((int *)temp->content));
+// 		temp = temp->next;
+// 	}
+// 	int tirou = n4;
+// 	t_ll_node	*finded_node = linkedlist->find(linkedlist, &tirou, compare);
+// 	if (finded_node)
+// 		linkedlist->detach(linkedlist, finded_node);
+// 	printf("tirou o %d!\n", tirou);
+// 	temp = linkedlist->begin;
+// 	while(temp)
+// 	{
+// 		printf("value: %d\n", *((int *)temp->content));
+// 		temp = temp->next;
+// 	}
+// }
+
+void test_strdup()
 {
 	printf("\n\n************************************************\n");
-	printf("TESTANDO LINKEDLIST!\n");
-	int n1 = 1;
-	int n2 = 2;
-	int n3 = 3;
-	int n4 = 4;
-	t_ll *linkedlist = ll_new();
-
-	linkedlist->add_back(linkedlist, &n1);
-	linkedlist->add_back(linkedlist, &n2);
-	linkedlist->add_back(linkedlist, &n3);
-	linkedlist->add_back(linkedlist, &n4);
-
-	t_ll_node	*temp = linkedlist->begin;
-	while(temp)
-	{
-		printf("value: %d\n", *((int *)temp->content));
-		temp = temp->next;
-	}
-	int tirou = n4;
-	t_ll_node	*finded_node = linkedlist->find(linkedlist, &tirou, compare);
-	if (finded_node)
-		linkedlist->detach(linkedlist, finded_node);
-	printf("tirou o %d!\n", tirou);
-	temp = linkedlist->begin;
-	while(temp)
-	{
-		printf("value: %d\n", *((int *)temp->content));
-		temp = temp->next;
-	}
+	printf("TESTANDO strdup!\n");
+	char * joined = ft_strdup("");
+	printf("res = %s", joined);	
 }

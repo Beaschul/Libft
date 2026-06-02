@@ -6,7 +6,7 @@
 /*   By: aschulz- <aschulz-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/26 16:48:07 by aschulz-          #+#    #+#             */
-/*   Updated: 2026/05/28 13:29:13 by aschulz-         ###   ########.fr       */
+/*   Updated: 2026/06/02 17:55:49 by aschulz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,13 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	size_t				i;
 	char				*str;
 
+	if (!s)
+		return (NULL);
 	len_s = ft_strlen(s);
 	if (start > len_s)
 		return (ft_strdup(""));
-	if (len > len_s + start)
-		len = len_s;
+	if (len_s < len + start)
+		len = len_s - start;
 	str = ft_calloc((len + 1), sizeof(char));
 	if (!str)
 		return (NULL);
@@ -34,3 +36,10 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 	}
 	return (str);
 }
+// int main(void)
+// {
+// 	char *nome = "0123456789";
+// 	char *oi = ft_substr(nome, 9, 10);
+// 	printf("res = %s", oi);
+// 	return(0);
+// }

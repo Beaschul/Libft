@@ -6,15 +6,17 @@
 /*   By: aschulz- <aschulz-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/01 16:48:26 by aschulz-          #+#    #+#             */
-/*   Updated: 2026/06/01 17:21:22 by aschulz-         ###   ########.fr       */
+/*   Updated: 2026/06/02 11:09:05 by aschulz-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-t_list *ft_lstlast(t_list *lst)
+#include "libft.h"
+
+t_list	*ft_lstlast(t_list *lst)
 {
-	if(!lst)
+	if (!lst)
 		return (NULL);
-	while(lst->next)
+	while (lst->next)
 	{
 		lst = lst->next;
 	}
